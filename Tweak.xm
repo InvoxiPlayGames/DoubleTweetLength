@@ -1,6 +1,7 @@
 /*
 	DoubleTweetLength version 1.0
-	(C) 2019 InvoxiPlayGames
+	by InvoxiPlayGames, 2019
+	Provided under the GNU GPLv3
 */
 
 %hook TwitterText
