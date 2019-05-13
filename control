@@ -1,0 +1,11 @@
+Package: uk.invoxiplaygames.doubletweetlength
+Name: DoubleTweetLength
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Lets you tweet (and see) 280 character tweets on older versions of Twitter.
+Maintainer: InvoxiPlayGames
+Author: InvoxiPlayGames
+Section: Tweaks
+Depiction: http://cydia.invoxiplaygames.uk/dp/doubletweetlength.php
+SileoDepiction: http://cydia.invoxiplaygames.uk/dp/doubletweetlength.json
