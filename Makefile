@@ -1,6 +1,4 @@
-SDKVERSION = 10.0
-SYSROOT = $(THEOS)/sdks/iPhoneOS8.1.sdk
-TARGET=iphone::8.1:3.0
+SDKVERSION = 8.1
 SDKVERSION_armv6=5.0
 ARCHS=armv6 armv7 arm64
 

@@ -16,5 +16,5 @@ Downloading a pre-compiled build of DoubleTweetLength can be done in multiple wa
 1. Set up a Theos environment.
 - If you don't already have that, read [this guide](https://github.com/theos/theos/wiki/Installation) to get started - compatible with Windows 10, macOS, Linux and iOS
 2. Edit the Makefile to your setup
-- Make sure you change SDKVERSION and SYSROOT to the SDK you have installed (the one provided uses the iOS 8.1 SDK in the default $THEOS folder, and iOS 5.0 for armv6 compiling. Remove armv6 from ARCHS if your compiler/linker complains.)
+- Make sure you change SDKVERSION and SDKVERSION_armv6 to the SDKs you have installed (the one provided uses the iOS 8.1 SDK in the default $THEOS folder, and iOS 5.0 for armv6 compiling. Remove armv6 from ARCHS if your compiler/linker complains.)
 3. Run `make package` (or `make package install` if you have set THEOS_DEVICE_IP to your device's SSH IP)
