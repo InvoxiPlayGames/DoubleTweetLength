@@ -1,7 +1,8 @@
 SDKVERSION = 10.0
-SYSROOT = $(THEOS)/sdks/iPhoneOS10.0.sdk
-TARGET=iphone::10.0:5.0
-ARCHS=armv7 arm64
+SYSROOT = $(THEOS)/sdks/iPhoneOS8.1.sdk
+TARGET=iphone::8.1:3.0
+SDKVERSION_armv6=5.0
+ARCHS=armv6 armv7 arm64
 
 include $(THEOS)/makefiles/common.mk
 

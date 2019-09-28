@@ -35,6 +35,28 @@
 }
 %end
 
+%group 280_Below61
+%hook TwitterAPI
++(id)baseRequestWithPartialURL:(id)arg1 parameters:(id)arg2 multiPartFormData:(id)arg3 apiRoot:(id)arg4
+{
+	/* Add the tweet_mode=extended GET parameter to tell Twitter's API we want 280 characters. */
+	id parametercopy = [arg2 mutableCopy];
+	[parametercopy setValue:@"extended" forKey:@"tweet_mode"];
+	return %orig(arg1, parametercopy, arg3, arg4);
+}
+%end
+%hook TwitterStatus
+-(id)initWithJSONDictionary:(id)arg1 ignoreUsers:(char)arg3
+{
+	/* For some unholy reason, Twitter's API returns the 280 character version in a tag called full_text, and the app expects text.
+	   Rather than change where it gets the text from, why not put the text where it expects? Nothing can go wrong with that, surely... */
+	id jsoncopy = [arg1 mutableCopy];
+	[jsoncopy setValue:[jsoncopy valueForKey:@"full_text"] forKey:@"text"];
+	return %orig(jsoncopy, arg3);
+}
+%end
+%end
+
 %group 280_Below627
 %hook TFNTwitterStatus
 -(id)initWithJSONDictionary:(id)arg1 users:(id)arg2 ignoreUsers:(char)arg3 statusID:(long long)arg4
@@ -61,8 +83,11 @@
 %end
 
 %ctor {
+	/* Get the current version of Twitter (the app we're in!) */
 	NSString *TwitterVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-	if ([TwitterVersion compare:@"6.27" options:NSNumericSearch] == NSOrderedAscending) {
+	if ([TwitterVersion compare:@"6.1.3" options:NSNumericSearch] == NSOrderedAscending) {
+        %init(280_Below61);
+    } else if ([TwitterVersion compare:@"6.27" options:NSNumericSearch] == NSOrderedAscending) {
         %init(280_Below627);
     } else {
 		%init(280_Above627);
